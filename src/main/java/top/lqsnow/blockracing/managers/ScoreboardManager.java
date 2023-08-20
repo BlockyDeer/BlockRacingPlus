@@ -114,6 +114,10 @@ public class ScoreboardManager {
         else setGameScoreboard();
     }
 
+    public static void roll() {
+
+    }
+
     // 设置玩家记分板
     public static void setPlayerScoreboard(Player p) {
         p.setScoreboard(scoreboard);

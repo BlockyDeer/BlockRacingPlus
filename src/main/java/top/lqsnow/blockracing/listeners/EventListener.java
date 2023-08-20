@@ -35,8 +35,8 @@ public class EventListener implements Listener {
     public static ArrayList<String> blueTeamPlayerString = new ArrayList<>();
     public static int blockAmount = 50;
     public static List<Player> prepareList = new ArrayList<>();
-    private boolean redIsRolled = false;
-    private boolean blueIsRolled = false;
+    private int redIsRolled = 0;
+    private int blueIsRolled = 0;
     public static HashMap<String, Location> point1 = new HashMap<>();
     public static HashMap<String, Location> point2 = new HashMap<>();
     public static HashMap<String, Location> point3 = new HashMap<>();
@@ -316,33 +316,35 @@ public class EventListener implements Listener {
                 return;
             }
             if (clickedItem.getItemMeta().getDisplayName().equals(ROLL)) {
-                if (redTeamPlayer.contains((Player) e.getWhoClicked()) & !redIsRolled) {
+                if (redTeamPlayer.contains((Player) e.getWhoClicked()) & (redIsRolled < 3)) {
                     for (int i = 0; i < 4; i++) {
                         if (redCurrentBlocks.size() != 0) {
                             redCurrentBlocks.remove(0);
-                            redCurrentBlocks.add(easyBlocks[r.nextInt(easyBlocks.length)]);
+                            List<String> allBlock = BlockManager.getAllBlock();
+                            redCurrentBlocks.add(allBlock.get(r.nextInt(allBlock.size())));
                         } else break;
                     }
 
                     ConsoleCommandHandler.send("tellraw @a \"\\u00a7c红队Roll掉了所需方块！\"");
-                    redIsRolled = true;
+                    redIsRolled += 1;
                     redTeamScore = 0;
                     ScoreboardManager.update();
-                } else if (redTeamPlayer.contains((Player) e.getWhoClicked()) & redIsRolled) {
+                } else if (redTeamPlayer.contains((Player) e.getWhoClicked())) {
                     e.getWhoClicked().sendMessage(ChatColor.DARK_RED + "您的队伍已经使用过Roll了！");
                 }
-                if (blueTeamPlayer.contains((Player) e.getWhoClicked()) & !blueIsRolled) {
+                if (blueTeamPlayer.contains((Player) e.getWhoClicked()) & (blueIsRolled < 3)) {
                     for (int i = 0; i < 4; i++) {
                         if (blueCurrentBlocks.size() != 0) {
                             blueCurrentBlocks.remove(0);
-                            blueCurrentBlocks.add(easyBlocks[r.nextInt(easyBlocks.length)]);
+                            List<String> allBlock = BlockManager.getAllBlock();
+                            blueCurrentBlocks.add(allBlock.get(r.nextInt(allBlock.size())));
                         } else break;
                     }
                     ConsoleCommandHandler.send("tellraw @a \"\\u00a79蓝队Roll掉了所需方块！\"");
-                    blueIsRolled = true;
+                    blueIsRolled += 1;
                     blueTeamScore = 0;
                     ScoreboardManager.update();
-                } else if (blueTeamPlayer.contains((Player) e.getWhoClicked()) & blueIsRolled) {
+                } else if (blueTeamPlayer.contains((Player) e.getWhoClicked())) {
                     e.getWhoClicked().sendMessage(ChatColor.DARK_RED + "您的队伍已经使用过Roll了！");
                 }
                 return;
