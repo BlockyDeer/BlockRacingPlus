@@ -97,7 +97,7 @@ public class InventoryManager {
                 TEAM_CHEST, ChatColor.AQUA + "打开队伍箱子选择界面",
                 0, "menu");
         setItem("TOTEM_OF_UNDYING", 1,
-                ROLL, ChatColor.AQUA + "花费全部积分将当前目标方块全部替换成普通方块（每局每队仅限一次）",
+                ROLL, ChatColor.AQUA + "花费全部积分将重置本队的所有目标方块（每局每队仅限3次）",
                 2, "menu");
         setItem("MAP", 1,
                 WAYPOINTS, ChatColor.AQUA + "保存或传送至记录点",

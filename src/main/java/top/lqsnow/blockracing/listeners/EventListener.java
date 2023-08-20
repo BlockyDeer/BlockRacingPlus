@@ -330,7 +330,7 @@ public class EventListener implements Listener {
                     redTeamScore = 0;
                     ScoreboardManager.update();
                 } else if (redTeamPlayer.contains((Player) e.getWhoClicked())) {
-                    e.getWhoClicked().sendMessage(ChatColor.DARK_RED + "您的队伍已经使用过Roll了！");
+                    e.getWhoClicked().sendMessage(ChatColor.DARK_RED + "您的队伍已经使用过Roll 3次了！");
                 }
                 if (blueTeamPlayer.contains((Player) e.getWhoClicked()) & (blueIsRolled < 3)) {
                     for (int i = 0; i < 4; i++) {
@@ -345,7 +345,7 @@ public class EventListener implements Listener {
                     blueTeamScore = 0;
                     ScoreboardManager.update();
                 } else if (blueTeamPlayer.contains((Player) e.getWhoClicked())) {
-                    e.getWhoClicked().sendMessage(ChatColor.DARK_RED + "您的队伍已经使用过Roll了！");
+                    e.getWhoClicked().sendMessage(ChatColor.DARK_RED + "您的队伍已经使用过Roll 3次了！");
                 }
                 return;
             }
