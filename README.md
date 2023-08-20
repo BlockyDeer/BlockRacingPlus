@@ -1,4 +1,9 @@
-# 方块竞速BlockRacing
+# BlockRacingPlus
+
+__方块竞速BlockRacingPlus，和自己的朋友们玩的修改版本。整体上降低了难度，对人少的情况友好__
+
+原作者的仓库链接在这里( **LQSnow** )：[传送门](https://github.com/LQSnow/BlockRacing)  
+此README在原作者的基础上有删改  
 
 这是一个Minecraft多人竞速小游戏，分为两个队伍，先收集完指定方块的队伍获胜。
 
@@ -12,7 +17,8 @@
 
 3. 队伍TP：同队伍之间可以自由TP。
 
-4. Roll：当前所需方块太难获取时，可以花费队伍积分轮换掉，每局仅限一次。
+4. Roll：当前所需方块太难获取时，可以花费队伍积分轮换掉，每局限3次。  
+    __BlockyDeer注：这里原作者的设计是每回合只能使用一次Roll，并且只能Roll出普通方块。这里改为每局每队3次后，为了游戏平衡性考虑改为了单纯的重轮换__
 
 5. 定位：玩家可以花费队伍积分购买locate指令，用于定位群系或结构。
 
@@ -43,20 +49,26 @@
 
 # 安装教程
 
-1. 准备一个Paper服务器（如果不会，可以去看我的博客里的相关文章，网址lqsnow.top）
+1. 准备一个Paper服务器  
+（BlockyDeer注：你也可以使用[Spigot](https://www.spigotmc.org/)，或者[Purpur](https://purpurmc.org/)，总之Bukkit系的服务端都可以）
 
-2. 下载插件，将插件放到服务器目录下的`plugins`文件夹中
+2. 下载插件，将插件放到服务器目录下的`plugins`文件夹中  
 
-3. （**推荐**）在`server.properties`文件中，更改如下设置：
+3.
+   （**推荐**）  
+   将`server.properties`中的`spawn-protection`后的值（一般来说默认是16）改为0  
 
-   ```
-   pvp=false
-   seed=
-   ```
+   __解释：此为出生点保护，打开可能会导致出生点附近无法破坏方块，防止方块等“bug”__  
 
-   推荐关闭PVP，让玩家沉浸于方块收集。
+   将`server.properties`中的`view-distance`（视野距离）调整为你的服务器带宽与内存允许的值（个人推荐6）  
 
-   推荐将种子留空，玩完一局后将`world` `world_nether` `world_the_end`三个文件夹删除，起到重置种子的作用。
+   将`server.properties`中的`simulation-distance`（模拟距离）调整为你的服务器CPU可接受的值  
+
+4. 你也可以考虑将`config`文件夹中的`paper-global.yml`允许活塞头破基岩等原版特性打开  
+
+5.
+   推荐将种子留空，玩完一局后将`world`，`world_nether`，`world_the_end`三个文件夹删除，起到重置种子的作用。  
+   __BlockyDeer注：建议自行筛一定范围内全群系种子，新版本生物群系规模是老版本的四倍，在不会locate biomes的情况下，跑图非常折磨。但是要记得每次重开都要把seed栏中的位置填上新种子名__  
 
    你也可以更改服务器启动文件（start.bat）以自动重启、自动重置种子（seed必须留空）：
 
@@ -98,18 +110,6 @@ zh_cn.json 翻译文件
 5. 不要修改文件名，不要删除文件
    
 6. 游戏内除了简单方块库必选以外，剩下的都可以选择性开启，如非特殊需要不要动这5个文件
-
-# 意见反馈
-
-游戏反馈：https://docs.qq.com/form/page/DU0Fvc0xtUmZWRUJN
-
-联系方式：
-
->  邮箱：lq_snow@outlook.com
-> 
->  QQ：2784628010
-> 
->  博客：lqsnow.top
 
 # 版权说明
 
