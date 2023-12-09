@@ -321,7 +321,7 @@ public class EventListener implements Listener {
                         if (redCurrentBlocks.size() != 0) {
                             redCurrentBlocks.remove(0);
                             List<String> allBlock = BlockManager.getAllBlock();
-                            redCurrentBlocks.add(allBlock.get(r.nextInt(allBlock.size())));
+                            redCurrentBlocks.add(BlockManager.roll(((double)redTeamScore + 1.0d) / blockAmount, r));
                         } else break;
                     }
 
@@ -337,7 +337,7 @@ public class EventListener implements Listener {
                         if (blueCurrentBlocks.size() != 0) {
                             blueCurrentBlocks.remove(0);
                             List<String> allBlock = BlockManager.getAllBlock();
-                            blueCurrentBlocks.add(allBlock.get(r.nextInt(allBlock.size())));
+                            blueCurrentBlocks.add(BlockManager.roll(((double)redTeamScore + 1.0d) / blockAmount, r));
                         } else break;
                     }
                     ConsoleCommandHandler.send("tellraw @a \"\\u00a79蓝队Roll掉了所需方块！\"");

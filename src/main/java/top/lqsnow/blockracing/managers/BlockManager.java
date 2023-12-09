@@ -1,9 +1,9 @@
 package top.lqsnow.blockracing.managers;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import org.bukkit.Material;
+import top.lqsnow.blockracing.utils.BlockDifficulty;
+
+import java.util.*;
 
 import static top.lqsnow.blockracing.listeners.EventListener.blockAmount;
 import static top.lqsnow.blockracing.listeners.EventListener.*;
@@ -45,5 +45,43 @@ public class BlockManager {
         allBlock.addAll(Arrays.asList(endBlocks));
 
         return allBlock;
-     }
+    }
+
+    public static String roll(double progress, Random random) {
+        switch (rollDifficulty(progress, random)) {
+            case EASY -> {
+                return easyBlocks[random.nextInt(easyBlocks.length)];
+            }
+            case NORMAL -> {
+                return normalBlocks[random.nextInt(normalBlocks.length)];
+            }
+            case HARD -> {
+                return hardBlocks[random.nextInt(normalBlocks.length)];
+            }
+            case ENDER -> {
+                return endBlocks[random.nextInt(normalBlocks.length)];
+            }
+            default -> {
+                return null;
+            }
+        }
+    }
+
+    private static BlockDifficulty rollDifficulty(double progress, Random random) {
+        double probabilityEasy = Math.pow(0.4d, 2.0d * progress) - 0.002;
+        double probabilityNormal = 0.6d * progress * progress + 0.045;
+        double probabilityEnder = (0.5d * Math.pow(2.0d, progress) - 0.9 > 0) ? (0.5d * Math.pow(2.0d, progress) - 0.9) : 0.0d;
+        double probabilityHard = 1.0d - probabilityEasy - probabilityNormal - probabilityEnder;
+
+        double rand = random.nextDouble();
+        if (rand <= probabilityEasy) {
+            return BlockDifficulty.EASY;
+        } else if (rand <= probabilityNormal + probabilityEasy) {
+            return BlockDifficulty.NORMAL;
+        } else if (rand <= probabilityHard + probabilityNormal + probabilityEasy) {
+            return BlockDifficulty.HARD;
+        } else {
+            return BlockDifficulty.ENDER;
+        }
+    }
 }

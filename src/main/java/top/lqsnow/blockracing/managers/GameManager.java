@@ -152,16 +152,34 @@ public class GameManager {
         ArrayList<String> blocks_temp = new ArrayList<>();
         Collections.addAll(blocks_temp, blocks);
         for (int i = 0; i < blockAmount; i++) {
-            int a = r.nextInt(blocks.length - i);
-            redTeamBlocks.add(blocks_temp.get(a));
-            blocks_temp.remove(a);
+            String b;
+            while(true) {
+                b = BlockManager.roll(0.0d, r);
+                if (blocks_temp.contains(b)) {
+                    continue;
+                } else {
+                    break;
+                }
+            }
+            blocks_temp.add(b);
+            redTeamBlocks.add(b);
+            blocks_temp.clear();
         }
         blocks_temp.clear();
         Collections.addAll(blocks_temp, blocks);
         for (int i = 0; i < blockAmount; i++) {
-            int a = r.nextInt(blocks.length - i);
-            blueTeamBlocks.add(blocks_temp.get(a));
-            blocks_temp.remove(a);
+            String b;
+            while(true) {
+                b = BlockManager.roll(0.0d, r);
+                if (blocks_temp.contains(b)) {
+                    continue;
+                } else {
+                    break;
+                }
+            }
+            blocks_temp.add(b);
+            blueTeamBlocks.add(b);
+            blocks_temp.clear();
         }
         setCurrentBlocks();
     }

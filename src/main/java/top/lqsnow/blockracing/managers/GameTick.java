@@ -8,6 +8,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import top.lqsnow.blockracing.utils.ConsoleCommandHandler;
 import top.lqsnow.blockracing.utils.ItemBuilder;
 
+import static top.lqsnow.blockracing.listeners.EventListener.blockAmount;
 import static top.lqsnow.blockracing.managers.GameManager.*;
 import static top.lqsnow.blockracing.managers.InventoryManager.*;
 import static top.lqsnow.blockracing.managers.ScoreboardManager.blueTeamScore;
@@ -82,7 +83,7 @@ public class GameTick extends BukkitRunnable {
         redCompleteAmount += 1;
         redCurrentBlocks.remove(block);
         if (redTeamBlocks.size() >= 1) {
-            redCurrentBlocks.add(redTeamBlocks.get(0));
+            redCurrentBlocks.add(BlockManager.roll(((double)redTeamScore + 1.0d) / blockAmount, r));
             redTeamBlocks.remove(0);
         }
         redTeamScore += 1;
@@ -121,7 +122,7 @@ public class GameTick extends BukkitRunnable {
         blueCompleteAmount += 1;
         blueCurrentBlocks.remove(block);
         if (blueTeamBlocks.size() >= 1) {
-            blueCurrentBlocks.add(blueTeamBlocks.get(0));
+            blueCurrentBlocks.add(BlockManager.roll(((double)blueTeamScore + 1.0d) / blockAmount, r));
             blueTeamBlocks.remove(0);
         }
         blueTeamScore += 1;
