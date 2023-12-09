@@ -28,7 +28,7 @@ public class Main extends JavaPlugin {
         Objects.requireNonNull(Bukkit.getPluginCommand("locate")).setTabCompleter(new Locate());
         Objects.requireNonNull(Bukkit.getPluginCommand("tp")).setExecutor(new TP());
         Objects.requireNonNull(Bukkit.getPluginCommand("restartgame")).setExecutor(new Restart());
-
+        Objects.requireNonNull(Bukkit.getPluginCommand("blockracing")).setExecutor(new BlockRacing());
 
         // 初始化记分板
         ScoreboardManager.createScoreboard();
