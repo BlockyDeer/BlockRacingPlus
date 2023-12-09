@@ -26,6 +26,7 @@ import static top.lqsnow.blockracing.managers.ScoreboardManager.*;
 
 
 public class EventListener implements Listener {
+    boolean isGameStart = false;
     public static ArrayList<Player> locateCommandPermission = new ArrayList<Player>();
     public static boolean enableNormalBlock = false;
     public static boolean enableHardBlock = false;

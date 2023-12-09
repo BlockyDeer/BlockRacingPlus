@@ -1,6 +1,6 @@
 name: BlockRacing
 version: '2.0'
-main: top.lqsnow.blockracing.Main
+main: top.lqsnow.BlockRacing.Main
 api-version: 1.19
 authors: [ LQ_Snow ]
 description: The first team to collect the required blocks wins
@@ -14,3 +14,5 @@ commands:
   restartgame:
     usage: "/restartgame"
     description: "Restart the game."
+  blockracing:
+    usage: "/blockracing join <red | blue> or /blockracing prepare"
