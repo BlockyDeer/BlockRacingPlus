@@ -2,6 +2,8 @@
 
 __方块竞速BlockRacingPlus，和自己的朋友们玩的修改版本。整体上降低了难度，对人少的情况友好__
 
+# **该版本已不再维护**
+
 原作者的仓库链接在这里( **LQSnow** )：[传送门](https://github.com/LQSnow/BlockRacing)  
 此README在原作者的基础上有删改  
 
